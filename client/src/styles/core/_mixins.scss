@@ -1,0 +1,44 @@
+@import './variables.scss';
+
+@mixin basic-setup {
+  font-family: 'Roboto', sans-serif;
+  color: $dark;
+
+  button:focus {
+    outline: none;
+  }
+}
+
+@mixin basic-input-field {
+  width: 100%;
+  min-height: 3rem;
+}
+
+@mixin basic-dialog {
+  padding: 1.7142857142857142rem;
+
+  h2 {
+    font-size: 1.7142857142857142rem;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.17;
+    letter-spacing: normal;
+  }
+
+  p {
+    font-size: 1.1428571428571428rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+  }
+}
+
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}

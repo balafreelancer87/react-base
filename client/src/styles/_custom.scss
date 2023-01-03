@@ -1,0 +1,20 @@
+.container {
+    height: 30vh;
+    background-color:$light-grey;
+    .header {
+        padding: 15px 20px;
+        background-color: $indigo;
+        h1 {
+            color: $white;
+            font-family: 'Open Sans Italic';
+        }
+    }
+}
+// check post css
+$font-sizee: 1rem;
+$font-color: lch(53 105 40);
+
+.postcss {
+  font-size: $font-sizee;
+  color: $font-color;
+}
