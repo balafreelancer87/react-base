@@ -34,18 +34,17 @@ module.exports={
     },
 
     /** "target"
-     * setting "node" as target app (server side), and setting it as "web" is 
+     * setting "node" as target app (server side), and setting it as "web" is
      * for browser (client side). Default is "web"
      */
     // Production: Magic happen here transpiling to es5 to partly support older browser like IE11
-    target: ['web', 'es5'], 
-   
+    target: ['web', 'es5'],
     resolve: {
-        /** "extensions" 
-         * If multiple files share the same name but have different extensions, webpack will 
-         * resolve the one with the extension listed first in the array and skip the rest. 
+        /** "extensions"
+         * If multiple files share the same name but have different extensions, webpack will
+         * resolve the one with the extension listed first in the array and skip the rest.
          * This is what enables users to leave off the extension when importing
-         */       
+         */
         modules: [paths.src, "node_modules"],
         extensions: ["*", ".js", ".jsx", ".css", ".scss", ".json", ".html"],
         alias: {
@@ -56,9 +55,9 @@ module.exports={
 
     module:{
         /** "rules"
-         * This says - "Hey webpack compiler, when you come across a path that resolves to a '.js or .jsx' 
-         * file inside of a require()/import statement, use the babel-loader to transform it before you 
-         * add it to the bundle. And in this process, kindly make sure to exclude node_modules folder from 
+         * This says - "Hey webpack compiler, when you come across a path that resolves to a '.js or .jsx'
+         * file inside of a require()/import statement, use the babel-loader to transform it before you
+         * add it to the bundle. And in this process, kindly make sure to exclude node_modules folder from
          * being searched"
          */
         rules: [
@@ -67,10 +66,9 @@ module.exports={
                 exclude: /node_modules/, //folder to be excluded
                 use:  'babel-loader' //loader which we are going to use
             },
-           
-            // Images and SVGs      
-            {        
-                test: /\.(png|jpe?g|gif|svg)$/i,    
+            // Images and SVGs
+            {
+                test: /\.(png|jpe?g|gif|svg)$/i,
                 type: 'asset/resource',
                 include: paths.src,
                 // use: [
@@ -83,20 +81,17 @@ module.exports={
                         maxSize: 10 * 1024 // Inline images under 10KB -- default-8KB
                     }
                 },
-                
                 generator: {
                     filename: "assets/images/[name][ext]",
                 },
             },
-           
-            // Fonts     
-            {       
-                test: /\.(woff(2)?|eot|ttf|otf|)$/,        
-                type: 'asset/inline',      
+            // Fonts
+            {
+                test: /\.(woff(2)?|eot|ttf|otf|)$/,
+                type: 'asset/inline',
             },
         ]
     },
-   
     // Customize the webpack build process
     plugins: [
         // Removes/cleans build folders and unused assets when rebuilding
@@ -107,15 +102,15 @@ module.exports={
         patterns: [
             {
                 from: `${paths.static}/robots.txt`,
-                to: paths.outputPath,           
+                to: paths.outputPath,
             },
             {
                 from: `${paths.static}/manifest.json`,
-                to: paths.outputPath,           
+                to: paths.outputPath,
             },
             {
                 from: `${paths.static}/favicon.ico`,
-                to: paths.outputPath,           
+                to: paths.outputPath,
             },
             // {
             //     from: `${paths.assetsPath}/images`,
@@ -134,7 +129,7 @@ module.exports={
             //     'og:description': 'A simple Boilerplate of React Js',
             //     'content-type': {'http-equiv': 'content-type', content: 'text/html; charset=UTF-8'}
             // },
-            title: "My Tool",
+            title: "My Base",
             //favicon: paths.src + "/assets/icons/favicon.png",
             template: paths.templatePath,
             filename: "index.html", // output file
@@ -153,7 +148,7 @@ module.exports={
             }
         }),
 
-        new CompressionPlugin(),     
+        new CompressionPlugin(),
         new ErrorOverlayPlugin(),
         new BundleAnalyzerPlugin({
             analyzerPort: 8001,
