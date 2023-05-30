@@ -4,7 +4,7 @@
 //     "parserOptions": { //for es6 import and others
 //         "ecmaVersion": 6,
 //         "sourceType": "module"
-//     }, 
+//     },
 //     "env": {
 //         "node": true, //tells we are using node , for "require"
 //         "browser": true //tells running in browser , for "document"
@@ -18,16 +18,23 @@
         "browser": true,
         "commonjs": true,
         "es6": true,
+        "es2021": true,
         "node": true,
         "jquery": true
       },
       "extends": [
         "eslint:recommended",
         "plugin:prettier/recommended",
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
+        "react-app",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:jsx-a11y/recommended"
       ],
-      "parser": "babel-eslint",
+      "parser": "@babel/eslint-parser",
       "parserOptions": {
-        "ecmaVersion": 2017,
+        "ecmaVersion": "latest",
         "ecmaFeatures": {
           "experimentalObjectRestSpread": true,
           "jsx": true
@@ -45,12 +52,9 @@
         "afterEach": true,
         "jest": true
       },
-      "plugins": [ "react" ],
+      "plugins": [ "react", "jsx-a11y" ],
       "rules": {
-        "semi": [
-          "error",
-          "never"
-        ],
+        "semi": ["error", "always", { "omitLastInOneLineBlock": false}],
         "no-unused-vars": [
           "error",
           { "varsIgnorePattern": "React" }
@@ -60,12 +64,7 @@
         "no-nested-ternary": 0,
         "multiline-ternary": 0,
         "react/jsx-uses-vars": 1,
-        "prettier/prettier": [
-          "error", {
-            "singleQuote": true,
-            "semi": false,
-            "trailingComma": "es5"
-          }
-        ]
+        "import/no-unresolved": "off",
+        "prettier/prettier": ["error"]
       }
 }
